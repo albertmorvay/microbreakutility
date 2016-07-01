@@ -19,3 +19,4 @@ A simple utility to unobtrusively remind you to get up from your workstation. In
 - The reminder will only be shown after the specified interval period has elapsed since the start of the application or the previous break;
 - The reminder will only be shown for the specified duration;
 - The reminder will be shown on the virtual desktop the user is currently on;
+- If user alt-f4s out of break handle the issue
