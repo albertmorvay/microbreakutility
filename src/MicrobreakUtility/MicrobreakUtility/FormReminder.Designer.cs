@@ -100,7 +100,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Microbreak reminder";
             this.Load += new System.EventHandler(this.FormReminder_Load);
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(FormReminder_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

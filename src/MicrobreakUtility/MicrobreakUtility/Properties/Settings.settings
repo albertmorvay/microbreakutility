@@ -11,17 +11,5 @@
     <Setting Name="PostponeMicrobreakInMinutes" Type="System.Double" Scope="User">
       <Value Profile="(Default)">10</Value>
     </Setting>
-    <Setting Name="PlaySoundAtStartOfBreak" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="PlaySoundAtEndOfBreak" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="LocationOfWavFileToPlayAtStartOfBreak" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\temp\breakStart.wav</Value>
-    </Setting>
-    <Setting Name="LocationOfWavFileToPlayAtEndOfBreak" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\temp\breakEnd.wav</Value>
-    </Setting>
   </Settings>
 </SettingsFile>

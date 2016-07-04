@@ -58,53 +58,5 @@ namespace MicrobreakUtility.Properties {
                 this["PostponeMicrobreakInMinutes"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool PlaySoundAtStartOfBreak {
-            get {
-                return ((bool)(this["PlaySoundAtStartOfBreak"]));
-            }
-            set {
-                this["PlaySoundAtStartOfBreak"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool PlaySoundAtEndOfBreak {
-            get {
-                return ((bool)(this["PlaySoundAtEndOfBreak"]));
-            }
-            set {
-                this["PlaySoundAtEndOfBreak"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\temp\\breakStart.wav")]
-        public string LocationOfWavFileToPlayAtStartOfBreak {
-            get {
-                return ((string)(this["LocationOfWavFileToPlayAtStartOfBreak"]));
-            }
-            set {
-                this["LocationOfWavFileToPlayAtStartOfBreak"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\temp\\breakEnd.wav")]
-        public string LocationOfWavFileToPlayAtEndOfBreak {
-            get {
-                return ((string)(this["LocationOfWavFileToPlayAtEndOfBreak"]));
-            }
-            set {
-                this["LocationOfWavFileToPlayAtEndOfBreak"] = value;
-            }
-        }
     }
 }
