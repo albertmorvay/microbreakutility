@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="HeartHealth.ico" />
+    <None Include="Resources\Synchronize.png" />
     <None Include="Resources\Icons8Logo.png" />
     <None Include="Resources\Future.png" />
     <None Include="Resources\Timer.png" />

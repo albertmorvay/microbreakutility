@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MicrobreakUtility.Helpers;
+using System;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using MicrobreakUtility.Helpers;
+using System.IO;
 using System.Windows.Forms;
 
 
@@ -31,20 +25,23 @@ namespace MicrobreakUtility
         private void FormReminder_Load(object sender, EventArgs e)
         {
             timerMicrobreakDuration.Start();
+            PlaySound(form1.locationOfWavFileToPlayAtStartOfBreak);
+            form1.MinimizeForm();
         }
 
         private void PlaceLowerRight()
         {
+            
             Rectangle primaryScreenWorkingArea = Screen.PrimaryScreen.WorkingArea;
             Location = new Point((primaryScreenWorkingArea.Right/2) - (Size.Width/2),
                                       primaryScreenWorkingArea.Bottom - Size.Height);
         }
         
 
-        protected override void OnLoad(System.EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
             PlaceLowerRight();
-            NativeMethods.AnimateWindow(this.Handle, 200,
+            NativeMethods.AnimateWindow(Handle, 200,
                 NativeMethods.AW_SLIDE
                 | NativeMethods.AW_VER_NEGATIVE);
 
@@ -82,6 +79,7 @@ namespace MicrobreakUtility
         {
             if (form1.endOfCurrentBreak <= DateTime.Now)
             {
+                PlaySound(form1.locationOfWavFileToPlayAtEndOfBreak);
                 form1.SetTimeOfNextBreak();
                 Close();
             }
@@ -92,6 +90,20 @@ namespace MicrobreakUtility
         {
             var timeRemainingOfBreak = (form1.endOfCurrentBreak - DateTime.Now);
             labelBreakTimeRemaining.Text = string.Format("{0}:{1}", timeRemainingOfBreak.ToString("mm"), timeRemainingOfBreak.ToString("ss"));
+        }
+
+        private void FormReminder_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            form1.SetTimeOfNextBreak();
+        }
+
+        private void PlaySound(string soundFileLocation)
+        {
+            if (File.Exists(soundFileLocation) && form1.PlaySoundAtStartOfBreak || form1.PlaySoundAtEndOfBreak)
+            {
+                System.Media.SoundPlayer player = new System.Media.SoundPlayer(soundFileLocation);
+                player.Play();
+            }
         }
     }
 }
