@@ -1,4 +1,7 @@
-﻿namespace MicrobreakUtility
+﻿using System;
+using System.Windows.Forms;
+
+namespace MicrobreakUtility
 {
     partial class Form1
     {
@@ -31,7 +34,18 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPageHome = new System.Windows.Forms.TabPage();
+            this.buttonReset = new System.Windows.Forms.Button();
+            this.buttonBreakNow = new System.Windows.Forms.Button();
+            this.labelTimeUntilNextBreak = new System.Windows.Forms.Label();
             this.tabPageSettings = new System.Windows.Forms.TabPage();
+            this.textBoxlocationOfWavFileToPlayAtEndOfBreak = new System.Windows.Forms.TextBox();
+            this.textBoxLocationOfWavFileToPlayAtStartOfBreak = new System.Windows.Forms.TextBox();
+            this.checkBoxPlaySoundAtEndOfBreak = new System.Windows.Forms.CheckBox();
+            this.checkBoxPlaySoundAtStartOfBreak = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.numericUpDownPostponeBreakBy = new System.Windows.Forms.NumericUpDown();
+            this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.numericUpDownIntervalBetweenBreaks = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
@@ -43,24 +57,19 @@
             this.label2 = new System.Windows.Forms.Label();
             this.linkLabelToIcons8 = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
-            this.timerMicrobreak = new System.Windows.Forms.Timer(this.components);
-            this.label7 = new System.Windows.Forms.Label();
-            this.numericUpDownPostponeBreakBy = new System.Windows.Forms.NumericUpDown();
-            this.label8 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.labelTimeUntilNextBreak = new System.Windows.Forms.Label();
-            this.buttonBreakNow = new System.Windows.Forms.Button();
-            this.tabPageHome = new System.Windows.Forms.TabPage();
+            this.timerMicrobreak = new System.Windows.Forms.Timer(this.components);
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.tabControl1.SuspendLayout();
+            this.tabPageHome.SuspendLayout();
             this.tabPageSettings.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPostponeBreakBy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIntervalBetweenBreaks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDurationOfBreaks)).BeginInit();
             this.tabPageAbout.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPostponeBreakBy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.tabPageHome.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -74,11 +83,71 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(435, 234);
+            this.tabControl1.Size = new System.Drawing.Size(475, 234);
             this.tabControl1.TabIndex = 0;
+            // 
+            // tabPageHome
+            // 
+            this.tabPageHome.Controls.Add(this.buttonReset);
+            this.tabPageHome.Controls.Add(this.buttonBreakNow);
+            this.tabPageHome.Controls.Add(this.labelTimeUntilNextBreak);
+            this.tabPageHome.Location = new System.Drawing.Point(4, 22);
+            this.tabPageHome.Name = "tabPageHome";
+            this.tabPageHome.Size = new System.Drawing.Size(467, 208);
+            this.tabPageHome.TabIndex = 2;
+            this.tabPageHome.Text = "Home";
+            this.tabPageHome.UseVisualStyleBackColor = true;
+            // 
+            // buttonReset
+            // 
+            this.buttonReset.BackColor = System.Drawing.Color.White;
+            this.buttonReset.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonReset.FlatAppearance.BorderSize = 0;
+            this.buttonReset.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.buttonReset.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonReset.Image = global::MicrobreakUtility.Properties.Resources.Synchronize;
+            this.buttonReset.Location = new System.Drawing.Point(125, 129);
+            this.buttonReset.Name = "buttonReset";
+            this.buttonReset.Size = new System.Drawing.Size(68, 68);
+            this.buttonReset.TabIndex = 8;
+            this.buttonReset.UseVisualStyleBackColor = false;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            // 
+            // buttonBreakNow
+            // 
+            this.buttonBreakNow.BackColor = System.Drawing.Color.White;
+            this.buttonBreakNow.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.buttonBreakNow.FlatAppearance.BorderSize = 0;
+            this.buttonBreakNow.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.buttonBreakNow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.buttonBreakNow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBreakNow.Image = global::MicrobreakUtility.Properties.Resources.HeartHealth;
+            this.buttonBreakNow.Location = new System.Drawing.Point(225, 129);
+            this.buttonBreakNow.Name = "buttonBreakNow";
+            this.buttonBreakNow.Size = new System.Drawing.Size(68, 68);
+            this.buttonBreakNow.TabIndex = 7;
+            this.buttonBreakNow.UseVisualStyleBackColor = false;
+            this.buttonBreakNow.Click += new System.EventHandler(this.buttonBreakNow_Click);
+            // 
+            // labelTimeUntilNextBreak
+            // 
+            this.labelTimeUntilNextBreak.AutoSize = true;
+            this.labelTimeUntilNextBreak.Font = new System.Drawing.Font("Calibri", 57.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTimeUntilNextBreak.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.labelTimeUntilNextBreak.Location = new System.Drawing.Point(105, 41);
+            this.labelTimeUntilNextBreak.Name = "labelTimeUntilNextBreak";
+            this.labelTimeUntilNextBreak.Size = new System.Drawing.Size(217, 94);
+            this.labelTimeUntilNextBreak.TabIndex = 6;
+            this.labelTimeUntilNextBreak.Text = "00:00";
             // 
             // tabPageSettings
             // 
+            this.tabPageSettings.AutoScroll = true;
+            this.tabPageSettings.Controls.Add(this.textBoxlocationOfWavFileToPlayAtEndOfBreak);
+            this.tabPageSettings.Controls.Add(this.textBoxLocationOfWavFileToPlayAtStartOfBreak);
+            this.tabPageSettings.Controls.Add(this.checkBoxPlaySoundAtEndOfBreak);
+            this.tabPageSettings.Controls.Add(this.checkBoxPlaySoundAtStartOfBreak);
             this.tabPageSettings.Controls.Add(this.label7);
             this.tabPageSettings.Controls.Add(this.numericUpDownPostponeBreakBy);
             this.tabPageSettings.Controls.Add(this.label8);
@@ -91,16 +160,102 @@
             this.tabPageSettings.Location = new System.Drawing.Point(4, 22);
             this.tabPageSettings.Name = "tabPageSettings";
             this.tabPageSettings.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSettings.Size = new System.Drawing.Size(427, 208);
+            this.tabPageSettings.Size = new System.Drawing.Size(467, 208);
             this.tabPageSettings.TabIndex = 0;
             this.tabPageSettings.Text = "Settings";
             this.tabPageSettings.UseVisualStyleBackColor = true;
+            // 
+            // textBoxlocationOfWavFileToPlayAtEndOfBreak
+            // 
+            this.textBoxlocationOfWavFileToPlayAtEndOfBreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.textBoxlocationOfWavFileToPlayAtEndOfBreak.Location = new System.Drawing.Point(49, 268);
+            this.textBoxlocationOfWavFileToPlayAtEndOfBreak.Name = "textBoxlocationOfWavFileToPlayAtEndOfBreak";
+            this.textBoxlocationOfWavFileToPlayAtEndOfBreak.Size = new System.Drawing.Size(378, 31);
+            this.textBoxlocationOfWavFileToPlayAtEndOfBreak.TabIndex = 20;
+            this.textBoxlocationOfWavFileToPlayAtEndOfBreak.TextChanged += new System.EventHandler(this.textBoxlocationOfWavFileToPlayAtEndOfBreak_TextChanged);
+            // 
+            // textBoxLocationOfWavFileToPlayAtStartOfBreak
+            // 
+            this.textBoxLocationOfWavFileToPlayAtStartOfBreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.textBoxLocationOfWavFileToPlayAtStartOfBreak.Location = new System.Drawing.Point(49, 181);
+            this.textBoxLocationOfWavFileToPlayAtStartOfBreak.Name = "textBoxLocationOfWavFileToPlayAtStartOfBreak";
+            this.textBoxLocationOfWavFileToPlayAtStartOfBreak.Size = new System.Drawing.Size(378, 31);
+            this.textBoxLocationOfWavFileToPlayAtStartOfBreak.TabIndex = 19;
+            this.textBoxLocationOfWavFileToPlayAtStartOfBreak.TextChanged += new System.EventHandler(this.textBoxLocationOfWavFileToPlayAtStartOfBreak_TextChanged);
+            // 
+            // checkBoxPlaySoundAtEndOfBreak
+            // 
+            this.checkBoxPlaySoundAtEndOfBreak.AutoSize = true;
+            this.checkBoxPlaySoundAtEndOfBreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.checkBoxPlaySoundAtEndOfBreak.Location = new System.Drawing.Point(27, 233);
+            this.checkBoxPlaySoundAtEndOfBreak.Name = "checkBoxPlaySoundAtEndOfBreak";
+            this.checkBoxPlaySoundAtEndOfBreak.Size = new System.Drawing.Size(342, 29);
+            this.checkBoxPlaySoundAtEndOfBreak.TabIndex = 18;
+            this.checkBoxPlaySoundAtEndOfBreak.Text = "Play sound at the end of a break";
+            this.checkBoxPlaySoundAtEndOfBreak.UseVisualStyleBackColor = true;
+            this.checkBoxPlaySoundAtEndOfBreak.CheckedChanged += new System.EventHandler(this.checkBoxPlaySoundAtEndOfBreak_CheckedChanged);
+            // 
+            // checkBoxPlaySoundAtStartOfBreak
+            // 
+            this.checkBoxPlaySoundAtStartOfBreak.AutoSize = true;
+            this.checkBoxPlaySoundAtStartOfBreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.checkBoxPlaySoundAtStartOfBreak.Location = new System.Drawing.Point(27, 146);
+            this.checkBoxPlaySoundAtStartOfBreak.Name = "checkBoxPlaySoundAtStartOfBreak";
+            this.checkBoxPlaySoundAtStartOfBreak.Size = new System.Drawing.Size(400, 29);
+            this.checkBoxPlaySoundAtStartOfBreak.TabIndex = 17;
+            this.checkBoxPlaySoundAtStartOfBreak.Text = "Play sound at the beginning of a break";
+            this.checkBoxPlaySoundAtStartOfBreak.UseVisualStyleBackColor = true;
+            this.checkBoxPlaySoundAtStartOfBreak.CheckedChanged += new System.EventHandler(this.checkBoxPlaySoundAtStartOfBreak_CheckedChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.label7.Location = new System.Drawing.Point(309, 104);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(63, 25);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "mins.";
+            // 
+            // numericUpDownPostponeBreakBy
+            // 
+            this.numericUpDownPostponeBreakBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.numericUpDownPostponeBreakBy.Location = new System.Drawing.Point(237, 101);
+            this.numericUpDownPostponeBreakBy.Maximum = new decimal(new int[] {
+            480,
+            0,
+            0,
+            0});
+            this.numericUpDownPostponeBreakBy.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownPostponeBreakBy.Name = "numericUpDownPostponeBreakBy";
+            this.numericUpDownPostponeBreakBy.Size = new System.Drawing.Size(66, 31);
+            this.numericUpDownPostponeBreakBy.TabIndex = 15;
+            this.numericUpDownPostponeBreakBy.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDownPostponeBreakBy.ValueChanged += new System.EventHandler(this.numericUpDownPostponeBreakBy_ValueChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+            this.label8.Location = new System.Drawing.Point(22, 104);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(209, 25);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Postpone breaks by:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.label5.Location = new System.Drawing.Point(346, 64);
+            this.label5.Location = new System.Drawing.Point(346, 62);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(63, 25);
             this.label5.TabIndex = 13;
@@ -109,7 +264,7 @@
             // numericUpDownIntervalBetweenBreaks
             // 
             this.numericUpDownIntervalBetweenBreaks.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.numericUpDownIntervalBetweenBreaks.Location = new System.Drawing.Point(274, 64);
+            this.numericUpDownIntervalBetweenBreaks.Location = new System.Drawing.Point(274, 59);
             this.numericUpDownIntervalBetweenBreaks.Maximum = new decimal(new int[] {
             480,
             0,
@@ -134,7 +289,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.label6.Location = new System.Drawing.Point(22, 66);
+            this.label6.Location = new System.Drawing.Point(22, 62);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(246, 25);
             this.label6.TabIndex = 11;
@@ -153,7 +308,7 @@
             // numericUpDownDurationOfBreaks
             // 
             this.numericUpDownDurationOfBreaks.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.numericUpDownDurationOfBreaks.Location = new System.Drawing.Point(222, 18);
+            this.numericUpDownDurationOfBreaks.Location = new System.Drawing.Point(222, 17);
             this.numericUpDownDurationOfBreaks.Maximum = new decimal(new int[] {
             480,
             0,
@@ -195,7 +350,7 @@
             this.tabPageAbout.Location = new System.Drawing.Point(4, 22);
             this.tabPageAbout.Name = "tabPageAbout";
             this.tabPageAbout.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAbout.Size = new System.Drawing.Size(427, 208);
+            this.tabPageAbout.Size = new System.Drawing.Size(467, 208);
             this.tabPageAbout.TabIndex = 1;
             this.tabPageAbout.Text = "About";
             this.tabPageAbout.UseVisualStyleBackColor = true;
@@ -242,54 +397,6 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Icons courtesy of";
             // 
-            // timerMicrobreak
-            // 
-            this.timerMicrobreak.Tick += new System.EventHandler(this.timerMicrobreak_Tick);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.label7.Location = new System.Drawing.Point(309, 111);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(63, 25);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "mins.";
-            // 
-            // numericUpDownPostponeBreakBy
-            // 
-            this.numericUpDownPostponeBreakBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.numericUpDownPostponeBreakBy.Location = new System.Drawing.Point(237, 109);
-            this.numericUpDownPostponeBreakBy.Maximum = new decimal(new int[] {
-            480,
-            0,
-            0,
-            0});
-            this.numericUpDownPostponeBreakBy.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownPostponeBreakBy.Name = "numericUpDownPostponeBreakBy";
-            this.numericUpDownPostponeBreakBy.Size = new System.Drawing.Size(66, 31);
-            this.numericUpDownPostponeBreakBy.TabIndex = 15;
-            this.numericUpDownPostponeBreakBy.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownPostponeBreakBy.ValueChanged += new System.EventHandler(this.numericUpDownPostponeBreakBy_ValueChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.label8.Location = new System.Drawing.Point(22, 111);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(209, 25);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "Postpone breaks by:";
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::MicrobreakUtility.Properties.Resources.HeartHealth;
@@ -310,73 +417,52 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // labelTimeUntilNextBreak
+            // timerMicrobreak
             // 
-            this.labelTimeUntilNextBreak.AutoSize = true;
-            this.labelTimeUntilNextBreak.Font = new System.Drawing.Font("Calibri", 57.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTimeUntilNextBreak.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.labelTimeUntilNextBreak.Location = new System.Drawing.Point(105, 41);
-            this.labelTimeUntilNextBreak.Name = "labelTimeUntilNextBreak";
-            this.labelTimeUntilNextBreak.Size = new System.Drawing.Size(217, 94);
-            this.labelTimeUntilNextBreak.TabIndex = 6;
-            this.labelTimeUntilNextBreak.Text = "00:00";
+            this.timerMicrobreak.Tick += new System.EventHandler(this.timerMicrobreak_Tick);
             // 
-            // buttonBreakNow
+            // notifyIcon
             // 
-            this.buttonBreakNow.BackColor = System.Drawing.Color.White;
-            this.buttonBreakNow.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.buttonBreakNow.FlatAppearance.BorderSize = 0;
-            this.buttonBreakNow.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
-            this.buttonBreakNow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.buttonBreakNow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBreakNow.Image = global::MicrobreakUtility.Properties.Resources.HeartHealth;
-            this.buttonBreakNow.Location = new System.Drawing.Point(178, 129);
-            this.buttonBreakNow.Name = "buttonBreakNow";
-            this.buttonBreakNow.Size = new System.Drawing.Size(68, 68);
-            this.buttonBreakNow.TabIndex = 7;
-            this.buttonBreakNow.UseVisualStyleBackColor = false;
-            this.buttonBreakNow.Click += new System.EventHandler(this.buttonBreakNow_Click);
-            // 
-            // tabPageHome
-            // 
-            this.tabPageHome.Controls.Add(this.buttonBreakNow);
-            this.tabPageHome.Controls.Add(this.labelTimeUntilNextBreak);
-            this.tabPageHome.Location = new System.Drawing.Point(4, 22);
-            this.tabPageHome.Name = "tabPageHome";
-            this.tabPageHome.Size = new System.Drawing.Size(427, 208);
-            this.tabPageHome.TabIndex = 2;
-            this.tabPageHome.Text = "Home";
-            this.tabPageHome.UseVisualStyleBackColor = true;
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "Microbreak Utility";
+            this.notifyIcon.Visible = true;
+            this.notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseClick);
+            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(435, 231);
+            this.ClientSize = new System.Drawing.Size(475, 231);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
+            this.ShowInTaskbar = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Micrbreak Utility";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             this.tabControl1.ResumeLayout(false);
+            this.tabPageHome.ResumeLayout(false);
+            this.tabPageHome.PerformLayout();
             this.tabPageSettings.ResumeLayout(false);
             this.tabPageSettings.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPostponeBreakBy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIntervalBetweenBreaks)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownDurationOfBreaks)).EndInit();
             this.tabPageAbout.ResumeLayout(false);
             this.tabPageAbout.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPostponeBreakBy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.tabPageHome.ResumeLayout(false);
-            this.tabPageHome.PerformLayout();
             this.ResumeLayout(false);
 
         }
+
+        
 
         #endregion
 
@@ -402,6 +488,12 @@
         private System.Windows.Forms.TabPage tabPageHome;
         private System.Windows.Forms.Button buttonBreakNow;
         private System.Windows.Forms.Label labelTimeUntilNextBreak;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
+        private Button buttonReset;
+        private CheckBox checkBoxPlaySoundAtStartOfBreak;
+        private CheckBox checkBoxPlaySoundAtEndOfBreak;
+        private TextBox textBoxLocationOfWavFileToPlayAtStartOfBreak;
+        private TextBox textBoxlocationOfWavFileToPlayAtEndOfBreak;
     }
 }
 
