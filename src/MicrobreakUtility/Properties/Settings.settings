@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MicrobreakUtility.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DurationOfMicrobreaksInMins" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="IntervalBetweenMicrobreaksInMins" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">25</Value>
+    </Setting>
+    <Setting Name="PostponeMicrobreakInMinutes" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="PlaySoundAtStartOfBreak" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="PlaySoundAtEndOfBreak" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="LocationOfWavFileToPlayAtStartOfBreak" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\temp\breakStart.wav</Value>
+    </Setting>
+    <Setting Name="LocationOfWavFileToPlayAtEndOfBreak" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\temp\breakEnd.wav</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
