@@ -106,6 +106,7 @@ namespace MicrobreakUtility
             else if (WindowState == FormWindowState.Minimized)
             {
                 ShowInTaskbar = true;
+                Show();
                 WindowState = FormWindowState.Normal;
                 TopMost = true;
                 TopMost = false;
@@ -118,6 +119,7 @@ namespace MicrobreakUtility
         {
             _isMinimized = true;
             ShowInTaskbar = false;
+            Hide();
             WindowState = FormWindowState.Minimized;
         }
 
