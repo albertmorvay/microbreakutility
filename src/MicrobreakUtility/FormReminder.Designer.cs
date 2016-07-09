@@ -39,6 +39,7 @@
             // buttonSkipBreak
             // 
             this.buttonSkipBreak.BackColor = System.Drawing.Color.White;
+            this.buttonSkipBreak.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonSkipBreak.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.buttonSkipBreak.FlatAppearance.BorderSize = 0;
             this.buttonSkipBreak.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
@@ -90,6 +91,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.buttonSkipBreak;
             this.ClientSize = new System.Drawing.Size(360, 68);
             this.Controls.Add(this.labelBreakTimeRemaining);
             this.Controls.Add(this.buttonSkipBreak);

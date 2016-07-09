@@ -61,7 +61,9 @@
     <Compile Include="FormReminder.Designer.cs">
       <DependentUpon>FormReminder.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\NativeMethods.cs" />
+    <Compile Include="Helpers\FormAnimations.cs" />
+    <Compile Include="Helpers\FormPositioning.cs" />
+    <Compile Include="Microbreak.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -95,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="HeartHealth.ico" />
+    <None Include="Resources\Synchronize.png" />
     <None Include="Resources\Icons8Logo.png" />
     <None Include="Resources\Future.png" />
     <None Include="Resources\Timer.png" />
