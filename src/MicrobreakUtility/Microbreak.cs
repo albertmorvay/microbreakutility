@@ -16,6 +16,7 @@ namespace MicrobreakUtility
         static public DateTime _nextBreak;
         static public DateTime endOfCurrentBreak;
         static public bool _microbreakInProgress = false;
+        static public bool ResetBreakOnWorkstationUnlock;
         static System.Timers.Timer timer = new System.Timers.Timer();
 
 
@@ -28,6 +29,7 @@ namespace MicrobreakUtility
             PlaySoundAtEndOfBreak = Properties.Settings.Default.PlaySoundAtEndOfBreak;
             locationOfWavFileToPlayAtStartOfBreak = Properties.Settings.Default.LocationOfWavFileToPlayAtStartOfBreak;
             locationOfWavFileToPlayAtEndOfBreak = Properties.Settings.Default.LocationOfWavFileToPlayAtEndOfBreak;
+            ResetBreakOnWorkstationUnlock = Properties.Settings.Default.ResetBreakOnWorkstationUnlock;
         }
 
         // Specify what you want to happen when the Elapsed event is raised.
