@@ -106,5 +106,17 @@ namespace MicrobreakUtility.Properties {
                 this["LocationOfWavFileToPlayAtEndOfBreak"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ResetBreakOnWorkstationUnlock {
+            get {
+                return ((bool)(this["ResetBreakOnWorkstationUnlock"]));
+            }
+            set {
+                this["ResetBreakOnWorkstationUnlock"] = value;
+            }
+        }
     }
 }

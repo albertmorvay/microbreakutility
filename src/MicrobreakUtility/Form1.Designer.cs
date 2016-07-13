@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Microsoft.Win32;
 using System.Windows.Forms;
 
 namespace MicrobreakUtility
@@ -61,6 +61,7 @@ namespace MicrobreakUtility
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.timerMicrobreak = new System.Windows.Forms.Timer(this.components);
+            this.checkBoxResetBreakOnWorkstationUnlock = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPageHome.SuspendLayout();
             this.tabPageSettings.SuspendLayout();
@@ -93,7 +94,7 @@ namespace MicrobreakUtility
             this.tabPageHome.Controls.Add(this.labelTimeUntilNextBreak);
             this.tabPageHome.Location = new System.Drawing.Point(4, 22);
             this.tabPageHome.Name = "tabPageHome";
-            this.tabPageHome.Size = new System.Drawing.Size(273, 260);
+            this.tabPageHome.Size = new System.Drawing.Size(273, 275);
             this.tabPageHome.TabIndex = 2;
             this.tabPageHome.Text = "Home";
             this.tabPageHome.UseVisualStyleBackColor = true;
@@ -144,6 +145,7 @@ namespace MicrobreakUtility
             // tabPageSettings
             // 
             this.tabPageSettings.AutoScroll = true;
+            this.tabPageSettings.Controls.Add(this.checkBoxResetBreakOnWorkstationUnlock);
             this.tabPageSettings.Controls.Add(this.textBoxlocationOfWavFileToPlayAtEndOfBreak);
             this.tabPageSettings.Controls.Add(this.textBoxLocationOfWavFileToPlayAtStartOfBreak);
             this.tabPageSettings.Controls.Add(this.checkBoxPlaySoundAtEndOfBreak);
@@ -168,7 +170,7 @@ namespace MicrobreakUtility
             // textBoxlocationOfWavFileToPlayAtEndOfBreak
             // 
             this.textBoxlocationOfWavFileToPlayAtEndOfBreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.textBoxlocationOfWavFileToPlayAtEndOfBreak.Location = new System.Drawing.Point(43, 229);
+            this.textBoxlocationOfWavFileToPlayAtEndOfBreak.Location = new System.Drawing.Point(43, 219);
             this.textBoxlocationOfWavFileToPlayAtEndOfBreak.Name = "textBoxlocationOfWavFileToPlayAtEndOfBreak";
             this.textBoxlocationOfWavFileToPlayAtEndOfBreak.Size = new System.Drawing.Size(213, 20);
             this.textBoxlocationOfWavFileToPlayAtEndOfBreak.TabIndex = 20;
@@ -177,7 +179,7 @@ namespace MicrobreakUtility
             // textBoxLocationOfWavFileToPlayAtStartOfBreak
             // 
             this.textBoxLocationOfWavFileToPlayAtStartOfBreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.textBoxLocationOfWavFileToPlayAtStartOfBreak.Location = new System.Drawing.Point(43, 165);
+            this.textBoxLocationOfWavFileToPlayAtStartOfBreak.Location = new System.Drawing.Point(43, 164);
             this.textBoxLocationOfWavFileToPlayAtStartOfBreak.Name = "textBoxLocationOfWavFileToPlayAtStartOfBreak";
             this.textBoxLocationOfWavFileToPlayAtStartOfBreak.Size = new System.Drawing.Size(213, 20);
             this.textBoxLocationOfWavFileToPlayAtStartOfBreak.TabIndex = 19;
@@ -187,7 +189,7 @@ namespace MicrobreakUtility
             // 
             this.checkBoxPlaySoundAtEndOfBreak.AutoSize = true;
             this.checkBoxPlaySoundAtEndOfBreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.checkBoxPlaySoundAtEndOfBreak.Location = new System.Drawing.Point(23, 206);
+            this.checkBoxPlaySoundAtEndOfBreak.Location = new System.Drawing.Point(23, 196);
             this.checkBoxPlaySoundAtEndOfBreak.Name = "checkBoxPlaySoundAtEndOfBreak";
             this.checkBoxPlaySoundAtEndOfBreak.Size = new System.Drawing.Size(180, 17);
             this.checkBoxPlaySoundAtEndOfBreak.TabIndex = 18;
@@ -199,7 +201,7 @@ namespace MicrobreakUtility
             // 
             this.checkBoxPlaySoundAtStartOfBreak.AutoSize = true;
             this.checkBoxPlaySoundAtStartOfBreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.checkBoxPlaySoundAtStartOfBreak.Location = new System.Drawing.Point(23, 142);
+            this.checkBoxPlaySoundAtStartOfBreak.Location = new System.Drawing.Point(23, 141);
             this.checkBoxPlaySoundAtStartOfBreak.Name = "checkBoxPlaySoundAtStartOfBreak";
             this.checkBoxPlaySoundAtStartOfBreak.Size = new System.Drawing.Size(208, 17);
             this.checkBoxPlaySoundAtStartOfBreak.TabIndex = 17;
@@ -211,7 +213,7 @@ namespace MicrobreakUtility
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label7.Location = new System.Drawing.Point(222, 100);
+            this.label7.Location = new System.Drawing.Point(222, 84);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(31, 13);
             this.label7.TabIndex = 16;
@@ -220,7 +222,7 @@ namespace MicrobreakUtility
             // numericUpDownPostponeBreakBy
             // 
             this.numericUpDownPostponeBreakBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.numericUpDownPostponeBreakBy.Location = new System.Drawing.Point(150, 100);
+            this.numericUpDownPostponeBreakBy.Location = new System.Drawing.Point(150, 80);
             this.numericUpDownPostponeBreakBy.Maximum = new decimal(new int[] {
             480,
             0,
@@ -245,7 +247,7 @@ namespace MicrobreakUtility
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label8.Location = new System.Drawing.Point(20, 100);
+            this.label8.Location = new System.Drawing.Point(20, 84);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(104, 13);
             this.label8.TabIndex = 14;
@@ -255,7 +257,7 @@ namespace MicrobreakUtility
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label5.Location = new System.Drawing.Point(222, 58);
+            this.label5.Location = new System.Drawing.Point(222, 52);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(31, 13);
             this.label5.TabIndex = 13;
@@ -264,7 +266,7 @@ namespace MicrobreakUtility
             // numericUpDownIntervalBetweenBreaks
             // 
             this.numericUpDownIntervalBetweenBreaks.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.numericUpDownIntervalBetweenBreaks.Location = new System.Drawing.Point(150, 58);
+            this.numericUpDownIntervalBetweenBreaks.Location = new System.Drawing.Point(150, 48);
             this.numericUpDownIntervalBetweenBreaks.Maximum = new decimal(new int[] {
             480,
             0,
@@ -289,7 +291,7 @@ namespace MicrobreakUtility
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label6.Location = new System.Drawing.Point(20, 58);
+            this.label6.Location = new System.Drawing.Point(20, 52);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(124, 13);
             this.label6.TabIndex = 11;
@@ -429,6 +431,18 @@ namespace MicrobreakUtility
             // 
             this.timerMicrobreak.Tick += new System.EventHandler(this.timerMicrobreak_Tick);
             // 
+            // checkBoxResetBreakOnWorkstationUnlock
+            // 
+            this.checkBoxResetBreakOnWorkstationUnlock.AutoSize = true;
+            this.checkBoxResetBreakOnWorkstationUnlock.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.checkBoxResetBreakOnWorkstationUnlock.Location = new System.Drawing.Point(23, 112);
+            this.checkBoxResetBreakOnWorkstationUnlock.Name = "checkBoxResetBreakOnWorkstationUnlock";
+            this.checkBoxResetBreakOnWorkstationUnlock.Size = new System.Drawing.Size(191, 17);
+            this.checkBoxResetBreakOnWorkstationUnlock.TabIndex = 21;
+            this.checkBoxResetBreakOnWorkstationUnlock.Text = "Reset break on workstation unlock";
+            this.checkBoxResetBreakOnWorkstationUnlock.UseVisualStyleBackColor = true;
+            this.checkBoxResetBreakOnWorkstationUnlock.CheckedChanged += new System.EventHandler(this.checkBoxResetBreakOnWorkstationUnlock_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -446,6 +460,7 @@ namespace MicrobreakUtility
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Resize += new System.EventHandler(this.Form1_Resize);
+            SystemEvents.SessionSwitch += new SessionSwitchEventHandler(SystemEvents_SessionSwitch);
             this.tabControl1.ResumeLayout(false);
             this.tabPageHome.ResumeLayout(false);
             this.tabPageHome.PerformLayout();
@@ -494,6 +509,7 @@ namespace MicrobreakUtility
         private TextBox textBoxLocationOfWavFileToPlayAtStartOfBreak;
         private TextBox textBoxlocationOfWavFileToPlayAtEndOfBreak;
         public Timer timerMicrobreak;
+        private CheckBox checkBoxResetBreakOnWorkstationUnlock;
     }
 }
 

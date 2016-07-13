@@ -1,4 +1,5 @@
 ﻿using MicrobreakUtility.Helpers;
+using Microsoft.Win32;
 using System;
 using System.Reflection;
 using System.Windows.Forms;
@@ -32,6 +33,7 @@ namespace MicrobreakUtility
             checkBoxPlaySoundAtEndOfBreak.Checked = Microbreak.PlaySoundAtEndOfBreak;
             textBoxLocationOfWavFileToPlayAtStartOfBreak.Text = Microbreak.locationOfWavFileToPlayAtStartOfBreak;
             textBoxlocationOfWavFileToPlayAtEndOfBreak.Text = Microbreak.locationOfWavFileToPlayAtEndOfBreak;
+            checkBoxResetBreakOnWorkstationUnlock.Checked = Microbreak.ResetBreakOnWorkstationUnlock;
         }
 
         private void PopulateControlsUnderAboutTab()
@@ -133,9 +135,27 @@ namespace MicrobreakUtility
 
         private void buttonReset_Click(object sender, EventArgs e)
         {
+            ResetCountdownToNextBreak();
+        }
+        
+        private void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
+        {
+            if (e.Reason == SessionSwitchReason.SessionUnlock && Microbreak.ResetBreakOnWorkstationUnlock)
+                ResetCountdownToNextBreak();
+        }
+
+        private void ResetCountdownToNextBreak()
+        {
             Microbreak.SetTimeOfNextBreak(this);
             if (formReminder != null)
                 formReminder.Close();
+        }
+
+        private void checkBoxResetBreakOnWorkstationUnlock_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ResetBreakOnWorkstationUnlock = checkBoxResetBreakOnWorkstationUnlock.Checked;
+            Properties.Settings.Default.Save();
+            Microbreak.InitializeSettings();
         }
 
         private void checkBoxPlaySoundAtStartOfBreak_CheckedChanged(object sender, EventArgs e)
